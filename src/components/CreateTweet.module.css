@@ -26,7 +26,9 @@
   padding: 0.5rem 0;
   min-height: 60px;
   font-family: inherit;
-  background-color: transparent;
+  background-color: rgb(245, 241, 241);
+  color:#10171d
+  
 }
 
 .textarea:focus {
@@ -66,4 +68,8 @@
 .footer button:disabled {
   background-color: #8ecdf8; /* Un azul más claro para el estado deshabilitado */
   cursor: not-allowed;
+}
+.textarea::placeholder {
+  color: #989a9b; /* Un gris oscuro y legible, el mismo que usamos para los @username */
+  opacity: 1; /* Asegura que el color no sea transparente en algunos navegadores */
 }
