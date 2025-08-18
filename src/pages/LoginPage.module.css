@@ -1,0 +1,82 @@
+/* src/pages/LoginPage.module.css */
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f2f5;
+  font-family: sans-serif;
+}
+
+.formContainer {
+  background: white;
+  padding: 2rem 3rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.formContainer h1 {
+  margin-bottom: 0.5rem;
+  color: #14171a;
+}
+
+.formContainer p {
+  margin-bottom: 2rem;
+  color: #657786;
+}
+
+.formContainer form {
+  display: flex;
+  flex-direction: column;
+}
+
+.formContainer label {
+  text-align: left;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #14171a;
+}
+
+.formContainer input {
+  padding: 0.8rem;
+  border: 1px solid #e1e8ed;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.formContainer button {
+  padding: 0.8rem;
+  border: none;
+  border-radius: 9999px; /* Pill shape */
+  background-color: #1d9bf0;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.formContainer button:hover {
+  background-color: #1a8cd8;
+}
+
+.formContainer button:disabled {
+  background-color: #aab8c2;
+  cursor: not-allowed;
+}
+
+.toggleText {
+  margin-top: 1.5rem;
+  color: #657786;
+}
+
+.toggleText span {
+  color: #1d9bf0;
+  font-weight: bold;
+  cursor: pointer;
+}
