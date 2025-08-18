@@ -1,21 +1,26 @@
+// src/components/Timeline.jsx
+
 import { useEffect, useState } from 'react';
 import { supabase } from '../supabaseClient';
 import styles from './Timeline.module.css';
 import CreateTweet from './CreateTweet';
 import Tweet from './Tweet';
+import { useAuth } from '../context/AuthContext';
 
 export default function Timeline() {
   const [tweets, setTweets] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { user } = useAuth();
 
   useEffect(() => {
-    // 1. Función para obtener los tweets iniciales
+    // --- LÓGICA DE FETCHING RESTAURADA A "FEED GLOBAL" ---
     const fetchTweets = async () => {
       setLoading(true);
       try {
+        // Simplemente obtenemos todos los tweets, sin filtrar por seguidores
         const { data, error } = await supabase
           .from('tweets')
-          .select('*, profiles(*), likes(*)') // Traemos tweets, perfiles y likes
+          .select('*, profiles(*), likes(*)')
           .order('created_at', { ascending: false });
 
         if (error) throw error;
@@ -29,41 +34,20 @@ export default function Timeline() {
 
     fetchTweets();
 
-    // 2. Suscripción a nuevos tweets en tiempo real
+    // La suscripción en tiempo real simplemente volverá a cargar el feed global
+    // para mostrar cualquier tweet nuevo de cualquier usuario.
     const channel = supabase
       .channel('realtime tweets')
-      .on(
-        'postgres_changes',
-        { event: 'INSERT', schema: 'public', table: 'tweets' },
-        (payload) => {
-          // Cuando llega un nuevo tweet, necesitamos obtener el perfil del autor
-          // ya que la subscripción no hace el "join" automáticamente.
-          const fetchNewTweetWithProfile = async () => {
-             const { data, error } = await supabase
-              .from('profiles')
-              .select('*')
-              .eq('id', payload.new.user_id)
-              .single();
-
-            if (!error) {
-              // --- LÍNEA CORREGIDA ---
-              // Aseguramos que el nuevo tweet tenga la misma estructura,
-              // incluyendo un array de 'likes' vacío.
-              const newTweet = { ...payload.new, profiles: data, likes: [] };
-              setTweets((currentTweets) => [newTweet, ...currentTweets]);
-            }
-          };
-          fetchNewTweetWithProfile();
-        }
-      )
+      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'tweets' }, (payload) => {
+        fetchTweets(); 
+      })
       .subscribe();
       
-    // 3. Limpieza de la suscripción al desmontar el componente
     return () => {
       supabase.removeChannel(channel);
     };
 
-  }, []);
+  }, [user]); // Dejamos la dependencia de 'user' para que el feed se recargue si el usuario cambia
 
   return (
     <div className={styles.timeline}>
@@ -74,8 +58,10 @@ export default function Timeline() {
       <div className={styles.tweetFeed}>
         {loading ? (
           <p className={styles.loadingText}>Cargando tweets...</p>
-        ) : (
+        ) : tweets.length > 0 ? (
           tweets.map((tweet) => <Tweet key={tweet.id} tweet={tweet} />)
+        ) : (
+          <p className={styles.loadingText}>Aún no hay tweets. ¡Sé el primero en publicar!</p>
         )}
       </div>
     </div>
