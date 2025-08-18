@@ -1,0 +1,54 @@
+/* src/components/UserList.module.css */
+
+.userListContainer {
+  background-color: #f7f9f9;
+  border-radius: 16px;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.header {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0 0 1rem 0;
+}
+
+.userCard {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ccd6dd;
+  margin-right: 0.75rem;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Permite que este elemento ocupe el espacio sobrante */
+}
+
+.fullName {
+  font-weight: bold;
+  color: #0f1419;
+}
+
+.username {
+  color: #536471;
+}
+
+.followButton {
+  background-color: #0f1419;
+  color: white;
+  border: none;
+  border-radius: 9999px;
+  padding: 0.4rem 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}

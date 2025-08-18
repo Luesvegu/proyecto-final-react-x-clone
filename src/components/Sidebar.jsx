@@ -1,17 +1,12 @@
 // src/components/Sidebar.jsx
 import styles from './Sidebar.module.css';
+import UserList from './UserList'; // Importamos el nuevo componente
 
 export default function Sidebar() {
   return (
     <div className={styles.sidebar}>
-      <div className={styles.widget}>
-        <h3>Buscar</h3>
-        <p>Buscador (próximamente)</p>
-      </div>
-      <div className={styles.widget}>
-        <h3>Tendencias</h3>
-        <p>Tendencias (próximamente)</p>
-      </div>
+      <UserList />
+      {/* Puedes añadir más widgets aquí en el futuro */}
     </div>
   );
 }
