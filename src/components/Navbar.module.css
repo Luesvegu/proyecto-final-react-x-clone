@@ -1,19 +1,86 @@
-.navbar { padding: 1rem; }
-.navbar ul { list-style: none; padding: 0; }
-.navbar li { font-size: 1.2rem; margin-bottom: 1.5rem; font-weight: bold; }
-/* Añadir al final de Navbar.module.css */
+/* src/components/Navbar.module.css */
 
+/* --- Estilos base (Escritorio) --- */
+.navbar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 1rem;
+}
+
+.navList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 9999px;
+  transition: background-color 0.2s;
+}
+
+.navItem:hover {
+  background-color: #eff3f4;
+}
+
+.navIcon {
+  font-size: 1.5rem;
+}
+
+/* Ocultamos el botón de perfil/salir en escritorio por defecto */
+.profileMobile {
+  display: none;
+}
+
+.profileDesktop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+}
+.userName {
+  font-weight: bold;
+}
+.userHandle {
+  color: #657786;
+}
+
+.signOutButton {
+  background: none;
+  border: 1px solid #657786;
+  color: #14171a;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  cursor: pointer;
+}
+
+
+/* --- Media Query para Móviles (max-width: 768px) --- */
 @media (max-width: 768px) {
   .navbar {
     padding: 0;
     height: 100%;
     display: flex;
+    flex-direction: row; /* Cambiamos dirección a horizontal */
     justify-content: center;
     align-items: center;
   }
 
-  .navbar ul {
-    /* Convertimos la lista vertical en una fila horizontal */
+  .navList {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -21,14 +88,31 @@
     margin: 0;
   }
 
-  .navbar li {
-    font-size: 1rem; /* Reducimos un poco el texto */
+  .navItem {
+    flex-direction: column; /* Icono arriba, texto abajo */
+    gap: 0.2rem;
+    font-size: 0.7rem;
     margin-bottom: 0;
   }
+  
+  /* Ocultamos el texto en móvil para que solo queden los iconos */
+  .navText {
+    display: none;
+  }
 
-  /* Ocultamos el botón de cerrar sesión en la barra inferior (por simplicidad) */
-  /* El usuario puede cerrar sesión desde la página de perfil (a futuro) */
-  .navbar button {
+  /* Mostramos el botón de perfil/salir en móvil */
+  .profileMobile {
+    display: flex;
+  }
+  
+  /* Y aquí es donde ocultamos el texto específico del botón de salir */
+  .profileMobile .navText {
+    display: block; /* Hacemos visible el texto "Salir" */
+    font-size: 0.7rem;
+  }
+
+  /* Ocultamos el botón de escritorio en móvil */
+  .profileDesktop {
     display: none;
   }
 }
