@@ -2,17 +2,31 @@
 
 .createTweetContainer {
   padding: 1rem;
-  border-bottom: 10px solid #f7f9f9;
+  border-bottom: 1px solid #eff3f4;
+  display: flex;
+  gap: 1rem;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #ccd6dd;
+}
+
+.formContainer {
+  width: 100%;
 }
 
 .textarea {
   width: 100%;
   border: none;
   resize: none;
-  font-size: 1.2rem;
-  padding: 0.5rem;
-  min-height: 80px;
+  font-size: 1.25rem; /* Texto más grande para que sea más legible */
+  padding: 0.5rem 0;
+  min-height: 60px;
   font-family: inherit;
+  background-color: transparent;
 }
 
 .textarea:focus {
@@ -23,16 +37,19 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
+  border-top: 1px solid #eff3f4;
+  padding-top: 0.75rem;
 }
 
 .charCount {
   margin-right: 1rem;
-  color: #657786;
+  color: #536471;
+  font-size: 0.9rem;
 }
 
 .footer button {
-  padding: 0.5rem 1rem;
+  padding: 0.6rem 1.2rem; /* Botón un poco más grande */
   border: none;
   border-radius: 9999px;
   background-color: #1d9bf0;
@@ -47,6 +64,6 @@
 }
 
 .footer button:disabled {
-  background-color: #aab8c2;
+  background-color: #8ecdf8; /* Un azul más claro para el estado deshabilitado */
   cursor: not-allowed;
 }

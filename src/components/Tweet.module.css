@@ -1,34 +1,89 @@
 /* src/components/Tweet.module.css */
+
 .tweetContainer {
   display: flex;
   padding: 1rem;
-  border-bottom: 1px solid #eff3f4;
+  border-bottom: 1px solid #eff3f4; /* Un borde más sutil */
+  transition: background-color 0.2s;
+  cursor: pointer;
 }
+
+.tweetContainer:hover {
+  background-color: #f7f9f9; /* Efecto hover sutil */
+}
+
 .avatar {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background-color: #ccd6dd;
+  background-color: #ccd6dd; /* Un placeholder visual para el avatar */
   margin-right: 1rem;
+  flex-shrink: 0; /* Evita que el avatar se encoja */
 }
+
 .tweetContent {
   width: 100%;
 }
+
 .header {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  flex-wrap: wrap; /* Permite que los elementos pasen a la siguiente línea en pantallas muy pequeñas */
 }
+
 .fullName {
   font-weight: bold;
-  color: #14171a;
+  color: #0f1419; /* Negro más suave que el negro puro */
 }
+
+.fullName:hover {
+  text-decoration: underline;
+}
+
 .username, .dot, .timestamp {
-  color: #657786;
+  color: #536471; /* Gris secundario para información meta */
+  font-size: 0.9rem;
 }
+
 .content {
-  margin: 0.5rem 0;
+  margin: 0.25rem 0 0.75rem; /* Ajuste de espaciado */
   line-height: 1.5;
-  color: #14171a;
-  white-space: pre-wrap; /* Respeta los saltos de línea */
+  color: #0f1419;
+  white-space: pre-wrap;
+  word-wrap: break-word; /* Asegura que el texto largo no rompa el layout */
+}
+
+.actions {
+  display: flex;
+  justify-content: space-around; /* Distribuye los iconos de acción */
+  margin-top: 0.5rem;
+  max-width: 425px; /* Limita el ancho de la sección de acciones */
+}
+
+.likeButton {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #536471; /* Color base para el icono y texto */
+  font-size: 0.9rem;
+  padding: 0.5rem;
+  border-radius: 9999px;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+.likeButton:hover {
+  color: #e0245e; /* Rojo de "me gusta" */
+  background-color: rgba(224, 36, 94, 0.1); /* Fondo sutil al pasar el mouse */
+}
+
+.likeButton .icon {
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+}
+
+.likeButton.liked {
+  color: #e0245e;
 }

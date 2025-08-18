@@ -24,7 +24,8 @@ export default function CreateTweet({ onTweetCreated }) {
 
       if (error) throw error;
 
-      // Llamamos a la función del padre para actualizar el estado de los tweets
+      // Esta prop ya no es necesaria si usamos la suscripción en tiempo real,
+      // pero es buena práctica mantenerla por si acaso.
       if (onTweetCreated) {
         onTweetCreated(data);
       }
@@ -40,21 +41,27 @@ export default function CreateTweet({ onTweetCreated }) {
 
   return (
     <div className={styles.createTweetContainer}>
-      <form onSubmit={handleSubmit}>
-        <textarea
-          className={styles.textarea}
-          placeholder="¿Qué está pasando?"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          maxLength="280"
-        />
-        <div className={styles.footer}>
-          <span className={styles.charCount}>{280 - content.length}</span>
-          <button type="submit" disabled={loading || !content.trim()}>
-            {loading ? 'Publicando...' : 'Publicar'}
-          </button>
-        </div>
-      </form>
+      {/* Div para el avatar del usuario (placeholder) */}
+      <div className={styles.avatar}></div> 
+
+      {/* Contenedor para el formulario */}
+      <div className={styles.formContainer}>
+        <form onSubmit={handleSubmit}>
+          <textarea
+            className={styles.textarea}
+            placeholder="¿Qué está pasando?"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            maxLength="280"
+          />
+          <div className={styles.footer}>
+            <span className={styles.charCount}>{280 - content.length}</span>
+            <button type="submit" disabled={loading || !content.trim()}>
+              {loading ? 'Publicando...' : 'Publicar'}
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
