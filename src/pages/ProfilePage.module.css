@@ -1,0 +1,79 @@
+/* src/pages/ProfilePage.module.css */
+.container {
+  border-left: 1px solid #eff3f4;
+  border-right: 1px solid #eff3f4;
+  min-height: 100vh;
+}
+
+.profileHeader {
+  padding: 1.5rem;
+  border-bottom: 1px solid #eff3f4;
+}
+
+.avatar {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background-color: #ccd6dd;
+  border: 4px solid white;
+  margin-top: -80px; /* Hace que el avatar se superponga */
+}
+
+.profileInfo {
+  margin-top: 1rem;
+}
+
+.fullName {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.username {
+  color: #536471;
+  margin: 0;
+}
+
+.tweetsContainer {
+  border-top: 10px solid #f7f9f9;
+}
+
+.tweetsTitle {
+  padding: 1rem;
+  font-size: 1.2rem;
+  border-bottom: 1px solid #eff3f4;
+}
+
+.loadingText {
+  text-align: center;
+  padding: 2rem;
+  color: #536471;
+}
+/* Añadir al final de ProfilePage.module.css */
+
+.profileHeader {
+  /* Añadimos position relative para posicionar el botón */
+  position: relative; 
+  padding: 1.5rem;
+  border-bottom: 1px solid #eff3f4;
+}
+
+.editButton {
+  /* Posicionamos el botón en la esquina superior derecha */
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  
+  background-color: transparent;
+  color: #0f1419;
+  border: 1px solid #cfd9de;
+  border-radius: 9999px;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.editButton:hover {
+  background-color: #eff3f4;
+}

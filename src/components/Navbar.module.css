@@ -116,3 +116,9 @@
     display: none;
   }
 }
+/* Añadir al final de Navbar.module.css */
+
+.navLink {
+  text-decoration: none;
+  color: inherit; /* Hereda el color del texto normal */
+}

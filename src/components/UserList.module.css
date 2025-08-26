@@ -52,3 +52,19 @@
   cursor: pointer;
   margin-left: 0.5rem;
 }
+/* Añadir al final de UserList.module.css */
+
+.userCardLink {
+  text-decoration: none; /* Quitamos el subrayado */
+  color: inherit; /* Heredamos el color de texto normal */
+}
+
+.userCard {
+  transition: background-color 0.2s;
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+
+.userCardLink:hover .userCard {
+  background-color: #e7e7e8; /* Efecto hover para indicar que es clicable */
+}

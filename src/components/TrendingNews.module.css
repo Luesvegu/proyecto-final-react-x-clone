@@ -1,0 +1,48 @@
+/* src/components/TrendingNews.module.css */
+
+.newsContainer {
+  background-color: #f7f9f9;
+  border-radius: 16px;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.header {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0 0 1rem 0;
+}
+
+.articleLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.article {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e7e7e8;
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+.articleLink:last-child .article {
+  border-bottom: none;
+}
+
+.articleLink:hover .article {
+  background-color: #e7e7e8;
+}
+
+.source {
+  font-size: 0.8rem;
+  color: #536471;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.title {
+  font-size: 0.95rem;
+  font-weight: bold;
+  margin: 0;
+  line-height: 1.3;
+}

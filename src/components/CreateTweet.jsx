@@ -1,5 +1,3 @@
-// src/components/CreateTweet.jsx
-
 import { useState } from 'react';
 import { supabase } from '../supabaseClient';
 import { useAuth } from '../context/AuthContext';
@@ -12,25 +10,23 @@ export default function CreateTweet({ onTweetCreated }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!content.trim()) return; // No enviar tweets vacíos
+    if (!content.trim()) return;
 
     setLoading(true);
     try {
       const { data, error } = await supabase
         .from('tweets')
         .insert([{ content, user_id: user.id }])
-        .select() // .select() devuelve el registro recién creado
+        .select()
         .single();
 
       if (error) throw error;
 
-      // Esta prop ya no es necesaria si usamos la suscripción en tiempo real,
-      // pero es buena práctica mantenerla por si acaso.
       if (onTweetCreated) {
         onTweetCreated(data);
       }
       
-      setContent(''); // Limpiamos el textarea
+      setContent('');
     } catch (error) {
       console.error('Error creating tweet:', error);
       alert('No se pudo publicar el tweet.');
@@ -41,10 +37,7 @@ export default function CreateTweet({ onTweetCreated }) {
 
   return (
     <div className={styles.createTweetContainer}>
-      {/* Div para el avatar del usuario (placeholder) */}
       <div className={styles.avatar}></div> 
-
-      {/* Contenedor para el formulario */}
       <div className={styles.formContainer}>
         <form onSubmit={handleSubmit}>
           <textarea
@@ -53,6 +46,7 @@ export default function CreateTweet({ onTweetCreated }) {
             value={content}
             onChange={(e) => setContent(e.target.value)}
             maxLength="280"
+            style={{ color: '#0f1419' }} // Estilo en línea para asegurar el color del texto
           />
           <div className={styles.footer}>
             <span className={styles.charCount}>{280 - content.length}</span>
